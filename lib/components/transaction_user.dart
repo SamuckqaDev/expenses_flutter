@@ -27,12 +27,27 @@ class _TransactionUserState extends State<TransactionUser> {
     ),
   ];
 
+  _doAddNewTransaction(String title, double value) {
+    final newTransaction = Transaction(
+      uuid: const Uuid().v4(),
+      title: title,
+      value: value,
+      date: DateTime.now(),
+    );
+
+    setState(() {
+      _transactions.add(newTransaction);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
+      children: <Widget>[
         TransactionList(transactions: _transactions),
-        TransactionsForm()
+        TransactionsForm(
+          onSubmit: _doAddNewTransaction,
+        ),
       ],
     );
   }

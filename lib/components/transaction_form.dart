@@ -5,7 +5,9 @@ class TransactionsForm extends StatelessWidget {
   final tittleController = TextEditingController(text: '');
   final valueController = TextEditingController(text: '');
 
-  TransactionsForm({super.key});
+  final Function(String, double) onSubmit;
+
+  TransactionsForm({super.key, required this.onSubmit});
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +40,15 @@ class TransactionsForm extends StatelessWidget {
                     ),
                     child: TextButton(
                         onPressed: () {
-                          if (kDebugMode) {
-                            print({
-                              'title': tittleController.text,
-                              'value': valueController.text,
-                            });
+                          final String title = tittleController.text;
+                          final double? value =
+                              double.tryParse(valueController.text);
+
+                          if (title.isEmpty || value == null) {
+                            return;
                           }
+
+                          onSubmit(title, value);
                         },
                         style: ButtonStyle(
                           foregroundColor:
