@@ -31,21 +31,24 @@ class Homepage extends StatelessWidget {
         ),
         backgroundColor: Colors.purple,
       ),
-      body: const Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          SizedBox(
-            child: Card(
-              color: Colors.purple,
-              elevation: 5,
-              child: Text(
-                "gauge",
-                style: TextStyle(color: Colors.white),
+      body: const SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(
+              child: Card(
+                color: Colors.purple,
+                elevation: 5,
+                child: Text(
+                  "gauge",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ),
-          ),
-          TransactionUser()
-        ],
+            TransactionUser()
+          ],
+        ),
       ),
     );
   }

@@ -25,6 +25,60 @@ class _TransactionUserState extends State<TransactionUser> {
       value: 999.99,
       date: DateTime.now(),
     ),
+    Transaction(
+      uuid: const Uuid().v4(),
+      title: "Food",
+      value: 999.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      uuid: const Uuid().v4(),
+      title: "Clothes",
+      value: 999.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      uuid: const Uuid().v4(),
+      title: "Car",
+      value: 999.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      uuid: const Uuid().v4(),
+      title: "House",
+      value: 999.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      uuid: const Uuid().v4(),
+      title: "Bike",
+      value: 999.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      uuid: const Uuid().v4(),
+      title: "Boat",
+      value: 999.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      uuid: const Uuid().v4(),
+      title: "Plane",
+      value: 999.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      uuid: const Uuid().v4(),
+      title: "Train",
+      value: 999.99,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      uuid: const Uuid().v4(),
+      title: "Bus",
+      value: 999.99,
+      date: DateTime.now(),
+    ),
   ];
 
   _doAddNewTransaction(String title, double value) {
@@ -40,14 +94,20 @@ class _TransactionUserState extends State<TransactionUser> {
     });
   }
 
+  _doRemoveTransaction(String uuid) {
+    setState(() {
+      _transactions.removeWhere((tr) => tr.uuid == uuid);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        TransactionList(transactions: _transactions),
         TransactionsForm(
           onSubmit: _doAddNewTransaction,
         ),
+        TransactionList(transactions: _transactions),
       ],
     );
   }
