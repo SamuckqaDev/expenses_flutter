@@ -31,12 +31,7 @@ class _TransactionUserState extends State<TransactionUser> {
       value: 999.99,
       date: DateTime.now(),
     ),
-    Transaction(
-      uuid: const Uuid().v4(),
-      title: "Clothes",
-      value: 999.99,
-      date: DateTime.now(),
-    ),
+
   ];
 
   _doAddNewTransaction(String title, double value) {

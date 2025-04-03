@@ -52,9 +52,7 @@ class TransactionsForm extends StatelessWidget {
                       color: Colors.purple,
                     ),
                     child: TextButton(
-                        onPressed: () {
-                          _doSubmitForm();
-                        },
+                        onPressed: _doSubmitForm,
                         style: ButtonStyle(
                           foregroundColor:
                               MaterialStateProperty.all<Color>(Colors.white),
