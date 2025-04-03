@@ -1,4 +1,5 @@
 import 'package:expenses/model/transaction.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
@@ -17,6 +18,9 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class Homepage extends StatelessWidget {
+  final tittleController = TextEditingController(text: '');
+  final valueController = TextEditingController(text: '');
+
   final _transactions = [
     Transaction(
       uuid: const Uuid().v4(),
@@ -49,7 +53,6 @@ class Homepage extends StatelessWidget {
         backgroundColor: Colors.purple,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           const SizedBox(
@@ -77,6 +80,7 @@ class Homepage extends StatelessWidget {
                         color: Colors.purple,
                         width: 2,
                       ),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     padding: const EdgeInsets.all(10),
                     child: Text(
@@ -102,7 +106,7 @@ class Homepage extends StatelessWidget {
                         ),
                         textAlign: TextAlign.left,
                       ),
-                      Text(DateFormat.yMMMd().format(tr.date),
+                      Text(DateFormat('dd MMM y').format(tr.date),
                           style: const TextStyle(
                             color: Colors.grey,
                           )),
@@ -111,6 +115,54 @@ class Homepage extends StatelessWidget {
                 ],
               )),
             )),
+            Card(
+              elevation: 5,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: <Widget>[
+                    TextField(
+                      decoration: const InputDecoration(
+                        labelText: 'Title',
+                      ),
+                      controller: tittleController,
+                    ),
+                    TextField(
+                      decoration: const InputDecoration(
+                        labelText: 'value(R\$)',
+                      ),
+                      controller: valueController,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.purple,
+                          ),
+                          child: TextButton(
+                              onPressed: () {
+                                if (kDebugMode) {
+                                  print({
+                                    'title': tittleController.text,
+                                    'value': valueController.text,
+                                  });
+                                }
+                              },
+                              style: ButtonStyle(
+                                foregroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.white),
+                              ),
+                              child: const Text('Add Transaction')),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            )
           ])
         ],
       ),
