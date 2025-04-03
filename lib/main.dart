@@ -1,5 +1,6 @@
 import 'package:expenses/model/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 main() => runApp(const ExpensesApp());
@@ -64,21 +65,51 @@ class Homepage extends StatelessWidget {
           Column(children: [
             ...(_transactions.map(
               (tr) => Card(
-                child: Row(
-                  children: [
-                    Text(
-                      tr.value.toString(),
+                  child: Row(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 10,
                     ),
-                    Column(
-                      children: [
-                        Text(tr.title),
-                        Text(tr.date.toString())
-                      ],
-                    )
-                  ],
-                )
-
-              ),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.purple,
+                        width: 2,
+                      ),
+                    ),
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      'R\$ ${tr.value.toStringAsFixed(2)}',
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.purple,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        tr.title,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.purple.shade900,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      Text(DateFormat.yMMMd().format(tr.date),
+                          style: const TextStyle(
+                            color: Colors.grey,
+                          )),
+                    ],
+                  )
+                ],
+              )),
             )),
           ])
         ],
