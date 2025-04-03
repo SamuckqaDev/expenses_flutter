@@ -11,13 +11,13 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 400,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            ...(transactions.map(
-              (tr) => Card(
-                  child: Row(
+      height: 300,
+      child: ListView.builder(
+          itemCount: transactions.length,
+          itemBuilder: (context, index) {
+            final tr = transactions[index];
+            return Card(
+              child: Row(
                 children: [
                   Container(
                     margin: const EdgeInsets.symmetric(
@@ -62,11 +62,9 @@ class TransactionList extends StatelessWidget {
                     ],
                   )
                 ],
-              )),
-            )),
-          ],
-        ),
-      ),
+              ),
+            );
+          }),
     );
   }
 }

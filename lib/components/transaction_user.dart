@@ -37,48 +37,6 @@ class _TransactionUserState extends State<TransactionUser> {
       value: 999.99,
       date: DateTime.now(),
     ),
-    Transaction(
-      uuid: const Uuid().v4(),
-      title: "Car",
-      value: 999.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      uuid: const Uuid().v4(),
-      title: "House",
-      value: 999.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      uuid: const Uuid().v4(),
-      title: "Bike",
-      value: 999.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      uuid: const Uuid().v4(),
-      title: "Boat",
-      value: 999.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      uuid: const Uuid().v4(),
-      title: "Plane",
-      value: 999.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      uuid: const Uuid().v4(),
-      title: "Train",
-      value: 999.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      uuid: const Uuid().v4(),
-      title: "Bus",
-      value: 999.99,
-      date: DateTime.now(),
-    ),
   ];
 
   _doAddNewTransaction(String title, double value) {
