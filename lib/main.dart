@@ -29,6 +29,13 @@ class Homepage extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () {},
+            color: Colors.white,
+          ),
+        ],
         backgroundColor: Colors.purple,
       ),
       body: const SingleChildScrollView(
@@ -48,6 +55,14 @@ class Homepage extends StatelessWidget {
             ),
             TransactionUser()
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.purple,
+        onPressed: () {},
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
         ),
       ),
     );
